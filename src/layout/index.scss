@@ -1,0 +1,109 @@
+@import '~@/style/mixins/mixins.scss';
+
+$--layout-transition-duration: 0.2s;
+
+.basic-layout {
+  position: relative;
+}
+
+@include b(layout) {
+  transition: all $--layout-transition-duration;
+  min-height: 0;
+  background: $--background-color-base;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  @include m(has-sidar) {
+    flex-direction: row;
+  }
+  @include e(main) {
+    overflow-x: hidden;
+    min-height: 100vh;
+    padding-left: $--sidar-width;
+    @include m(coll) {
+      padding-left: $--sidar-coll-width;
+    }
+  }
+  @include e(sidar) {
+    flex: 0 0 $--sidar-width;
+    max-width: $--sidar-width;
+    min-width: $--sidar-width;
+    width: $--sidar-width;
+    transition: all $--layout-transition-duration;
+    z-index: 10;
+
+    @include m(dark) {
+      background: $--background-color-menu;
+    }
+
+    @include m(coll) {
+      flex: 0 0 $--sidar-coll-width;
+      max-width: $--sidar-coll-width;
+      min-width: $--sidar-coll-width;
+      width: $--sidar-coll-width;
+    }
+    @include m(fixed) {
+      position: fixed;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+      .el-scrollbar {
+        height: 100%;
+      }
+    }
+  }
+  @include e(header) {
+    flex: 0 0 auto;
+    height: $--navbar-height;
+    padding: 0 50px;
+    line-height: $--navbar-height;
+    background: #001529;
+    @include m(fixed) {
+      width: calc(100% - #{$--sidar-width});
+      z-index: 9;
+      overflow: hidden;
+      padding: 0px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      transition: width $--layout-transition-duration;
+      @include m(coll) {
+        width: calc(100% - #{$--sidar-coll-width});
+      }
+    }
+  }
+  @include e(container) {
+    flex: auto;
+    min-height: 0;
+    margin: 24px;
+    padding-top: $--navbar-height;
+    @include m(coll) {
+      width: calc(100% - #{$--sidar-coll-width});
+    }
+  }
+  @include e(content) {
+    padding: 16px;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    background: white;
+    transition: 0.3s;
+  }
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s;
+}
+
+.fade-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}

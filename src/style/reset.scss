@@ -1,0 +1,86 @@
+@import './var';
+body {
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+    Segoe UI Symbol;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+#app,
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  list-style: non;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.table-expand {
+  font-size: 0;
+  display: inline-block;
+  & .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 45%;
+  }
+
+  & label {
+    width: auto;
+    color: #99a9bf;
+  }
+}
+
+thead tr {
+  .el-table-column--selection {
+    .cell {
+      display: none;
+    }
+  }
+}
+
+.el-dialog {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin: 0 !important;
+  transform: translate(-50%, -30%);
+  max-height: calc(100% - 15vh);
+  max-width: calc(100% - 30vw);
+  display: flex;
+  flex-direction: column;
+
+  .el-dialog__body {
+    overflow: auto;
+  }
+}
+
+.el-tree-node__content > .el-checkbox {
+  margin-right: 16px !important;
+}
+
+.el-form-item__label {
+  color: $--color-text-placeholder !important;
+}

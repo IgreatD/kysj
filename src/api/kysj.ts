@@ -1,0 +1,117 @@
+import settings from '@/config/settings';
+
+import { formatApi } from '@/utils/apiFormat';
+
+const kysjApis = {
+  // 登录
+  login: 'login',
+  // 获取 token
+  getUserToken: 'getUserToken',
+  // 获取注册的用户数
+  getAccountStatistics: 'getAccountStatistics',
+  // 获取微信分享数
+  getWxShare: 'getWxShareStatistics',
+  // 修改账户信息
+  updateUserInfo: 'updateUserInfo',
+  // 获取待审核的账户
+  getWaitVerify: 'getWaitVerify',
+  // 教师身份信息审核
+  teacherIDExamine: 'teacherIDExamine',
+  // 教师资格证信息审核
+  teacherCertifyExamine: 'teacherCertifyExamine',
+  // 获取已审核的账户
+  getAccountList: 'getAccountList',
+  // 设置账号为名师 1: 是 0: 不是
+  setTeacherIsTop: 'setTeacherIsTop',
+  // 改变账号的学段
+  changeAccountStage: 'changeAccountStage',
+  // 获取登录账号的菜单
+  getMyMenus: 'getMyMenus',
+  // 注册机构
+  regeditOrganization: 'regeditOrganization',
+  // 注册学生账号
+  regeditStudent: 'regeditStudent',
+  // 注册老师账号
+  regeditTeacher: 'regeditTeacher',
+  // 充值记录
+  getRechargeList: 'getRechargeList',
+  // 提现记录
+  getWithdrawListAfterTransfer: 'getWithdrawListAfterTransfer',
+  // 提现申请
+  getWithdrawList: 'getWithdrawList',
+  // 提现审核
+  withdrawExamine: 'withdrawExamine',
+  // 获取待审核的班级
+  getClassList: 'getClassList',
+  // 班级审核
+  classExamine: 'classExamine',
+  // 获取审核成功的班级
+  getTargetClassList: 'getTargetClassList',
+  // 修改班级信息
+  updateClassInfo: 'updateClassInfo',
+  // 获取班级课时列表
+  getClassLessonList: 'getClassLessonList',
+  // 修改课时信息
+  classLessonEdit: 'classLessonEdit',
+  // 修改课时价格
+  classLessonChangePrice: 'classLessonChangePrice',
+  // 获取视频
+  getCourseList: 'getCourseList',
+  // 视频审核
+  courseExamine: 'courseExamine',
+  // 获取角色
+  getRoles: 'getRoles',
+  // 添加/修改角色
+  addRole: 'addRole',
+  // 获取设备班级
+  getRtmpClassList: 'getRtmpClassList',
+  // 获取设备列表
+  getRtmpDeviceList: 'getRtmpDeviceList',
+  // 绑定班级设备
+  classBindRtmp: 'classBindRtmp',
+  // 查询直播流
+  getDescribeLiveStreamPushInfoList: 'DescribeLiveStreamPushInfoList',
+  // 禁播直播
+  forbidLiveStream: 'forbidLiveStream',
+  // 恢复直播
+  resumeLiveStream: 'resumeLiveStream',
+  // 断开直播
+  dropLiveStream: 'dropLiveStream',
+  // 编辑设备
+  editRtmpDevice: 'editRtmpDevice',
+  // 添加设备
+  addRtmpDevice: 'addRtmpDevice',
+  // 删除设备
+  delRtmpDevice: 'delRtmpDevice',
+  // 启用设备
+  enableRtmpDevice: 'enableRtmpDevice',
+  // 停用设备
+  unableRtmpDevice: 'unableRtmpDevice',
+  // 获取角色相关的功能
+  getMenuFunction: 'getMenuFunction',
+  // 设置角色相关的功能
+  setMenuFunction: 'setMenuFunction',
+  // 角色停用、启用
+  roleOnOff: 'roleOnOff',
+  // 获取所有的后台用户
+  getUsers: 'getUsers',
+  // 添加、修改后台用户
+  addUser: 'addUser',
+  // 后台用户停用、启用
+  userOnOff: 'userOnOff',
+  // 获取功能菜单
+  getFunctions: 'getFunctions',
+  // 获取菜单列表
+  getMenus: 'getMenus',
+  // 删除菜单
+  deleteMenu: 'deleteMenu',
+  // 通过菜单获取菜单功能
+  getFunctionsByMenuId: 'getFunctionsByMenuId',
+  // 通过菜单设置菜单功能
+  setFunctionsByMenuId: 'setFunctionsByMenuId',
+  // 添加菜单
+  addMenu: 'addMenu',
+};
+formatApi(kysjApis, settings.apiProxies.kysj);
+
+export default kysjApis;
