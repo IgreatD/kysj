@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "bootstrap": "yarn || npm i",
     "new": "node ./build/bin/new.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -13,7 +14,8 @@
     "docker-prod:build": "docker-compose -f ./docker/docker-compose.yml build",
     "docker-prod:up": "docker-compose -f ./docker/docker-compose.yml up",
     "docker:push": "npm run docker-hub:build && npm run docker:tag && docker push igreatd/sanyi-admin",
-    "docker:tag": "docker tag sanyi-admin igreatd/sanyi-admin"
+    "docker:tag": "docker tag sanyi-admin igreatd/sanyi-admin",
+    "pub": "yarn bootstrap && sh ./build/git-release.sh && sh ./build/deploy.sh"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -29,15 +31,13 @@
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "path-to-regexp": "^3.0.0",
-    "qrcodejs2": "^0.0.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.1.0",
     "vue-property-decorator": "8.2.2",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1",
     "vuex-class": "^0.3.2",
-    "vuex-module-decorators": "^0.9.9",
-    "xlsx": "^0.14.4"
+    "vuex-module-decorators": "^0.9.9"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.5.5",
