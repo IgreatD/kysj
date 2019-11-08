@@ -13,7 +13,8 @@
     "docker-prod:build": "docker-compose -f ./docker/docker-compose.yml build",
     "docker-prod:up": "docker-compose -f ./docker/docker-compose.yml up",
     "docker:push": "npm run docker-hub:build && npm run docker:tag && docker push igreatd/sanyi-admin",
-    "docker:tag": "docker tag sanyi-admin igreatd/sanyi-admin"
+    "docker:tag": "docker tag sanyi-admin igreatd/sanyi-admin",
+    "pub": "yarn bootstrap && sh ./build/git-release.sh && sh ./build/deploy.sh"
   },
   "dependencies": {
     "animate.css": "^3.7.2",
