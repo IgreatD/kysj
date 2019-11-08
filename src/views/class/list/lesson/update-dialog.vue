@@ -17,10 +17,10 @@
         <el-input v-model="formModel.LessonDescription" placeholder="请输入课时描述" />
       </el-form-item>
       <el-form-item label="开始时间">
-        <el-date-picker v-model="formModel.BeginDate" type="datetime" />
+        <el-date-picker v-model="formModel.BeginDate" type="datetime" value-format="yyyy-MM-dd HH:mm:ss" />
       </el-form-item>
       <el-form-item label="结束时间">
-        <el-date-picker v-model="formModel.EndDate" type="datetime" />
+        <el-date-picker v-model="formModel.EndDate" type="datetime" value-format="yyyy-MM-dd HH:mm:ss"/>
       </el-form-item>
     </el-form>
   </base-dialog>

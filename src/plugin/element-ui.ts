@@ -115,7 +115,10 @@ Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$message = Message; */
 
 import ElementUI from 'element-ui';
+import SingleMessage from '@/utils/singleMessage';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI, {
   size: 'small',
 });
+
+Vue.prototype.$message = new SingleMessage();

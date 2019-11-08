@@ -11,6 +11,10 @@ const kysjApis = {
   getAccountStatistics: 'getAccountStatistics',
   // 获取微信分享数
   getWxShare: 'getWxShareStatistics',
+  getPayStudentList: 'getPayStudentList',
+  getSignInStudentList: 'getSignInStudentList',
+  // 获取龙门课堂报名支付
+  getTopClassStatistics: 'getTopClassStatistics',
   // 修改账户信息
   updateUserInfo: 'updateUserInfo',
   // 获取待审核的账户
@@ -111,6 +115,37 @@ const kysjApis = {
   setFunctionsByMenuId: 'setFunctionsByMenuId',
   // 添加菜单
   addMenu: 'addMenu',
+  // 获取当前机构可以创建二维码的班级
+  getOrganizationParametersClassList: 'getOrganizationParametersClassList',
+  // 获取机构已创建的推广码班级
+  getOrganizationParametersList: 'getOrganizationParametersList',
+  // 根据地区获取学校列表
+  getSchool: 'getSchool',
+  // 机构添加/编辑 班级推广码
+  addOrganizationParameters: 'addOrganizationParameters',
+  // 删除班级推广码
+  deleteOrganizationParameters: 'deleteOrganizationParameters',
+  // 获取海报列表
+  getPosterList: 'getPosterList',
+  // 删除海报
+  deletePoster: 'deletePoster',
+  // add \ update poster
+  addPoster: 'addPoster',
+  // on - off
+  posterExamine: 'posterExamine',
+  getNoticeList: 'getNoticeList',
+  addNotice: 'addNotice',
+  deleteNotice: 'deleteNotice',
+  noticeExamine: 'noticeExamine',
+  getAdvertisList: 'getAdvertisList',
+  addAdvertis: 'addAdvertis',
+  advertisExamine: 'advertisExamine',
+  deleteAdvertis: 'deleteAdvertis',
+  getHelpList: 'getHelpList',
+  getDeviceTypeList: 'getDeviceTypeList',
+  addHelp: 'addHelp',
+  deleteHelp: 'deleteHelp',
+  getLessonRecordSource: 'getLessonRecordSource',
 };
 formatApi(kysjApis, settings.apiProxies.kysj);
 

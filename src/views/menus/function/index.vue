@@ -27,8 +27,5 @@ export default class MenuFunction extends Mixins(BaseFormVue) {
   private mounted() {
     this.getData();
   }
-  private getData() {
-    this.baseTable.getData();
-  }
 }
 </script>

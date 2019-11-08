@@ -1,24 +1,42 @@
-#!/usr/bin/env sh
+#! /bin/sh
 
-# 当发生错误时中止脚本
 set -e
 
-# 构建
-npm run build
+git checkout master
+git merge dev
 
-# cd 到构建输出的目录下
-cd dist/ms/kysj/
+VERSION=$(npx select-version-cli)
 
-# 部署到自定义域域名
-# echo 'www.example.com' > CNAME
+read -p "Deploy $VERSION - are you sure? (y/n)" -n 1 -r
 
-git init
-git add -A
-git commit -m 'deploy'
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "Deploy $VERSION ..."
 
-git push -f git@git.dev.tencent.com:IgreatD/kysj.git master
+  VERSION=$VERSION
 
-# 部署到 https://<USERNAME>.github.io/<REPO>
-# git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+  npm version $VERSION --message "[release] $VERSION"
 
-cd -
+  # publish
+  echo 'git push origin master'
+  git push origin master
+  git checkout dev
+  git rebase master
+  git push origin dev
+
+  yarn build
+
+  cd dist
+
+  # commit
+  git init
+  git add -A
+  git commit -m "[deploy] $VERSION"
+
+  # publish
+  git remote add origin git@github.com:IgreatD/kysj.git
+  git tag v$VERSION
+  git push origin v$VERSION
+  git tag -d v$VERSION
+
+fi

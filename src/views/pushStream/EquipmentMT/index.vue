@@ -43,9 +43,6 @@ export default class PushRtmpMt extends Mixins(BaseFormVue) {
   private mounted() {
     this.getData();
   }
-  private getData() {
-    this.baseTable.getData();
-  }
   private add() {
     this.current = {};
     this.addOrUpdateDialogShow = true;

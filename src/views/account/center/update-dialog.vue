@@ -3,7 +3,7 @@
     <template v-slot:footer>
       <el-button type="warning" :loading="updateLoading" @click="update">编辑</el-button>
     </template>
-    <el-form label-width="150px" ref="form" :model="formModel" :rules="formRules">
+    <el-form label-width="150px" ref="formRef" :model="formModel" :rules="formRules">
       <el-form-item label="昵称" prop="Name">
         <el-input v-model="formModel.Name" placeholder="请输入昵称" />
       </el-form-item>
@@ -91,7 +91,7 @@ export default class AccountUpdateDialog extends Mixins(BaseDialogVue) {
     ]);
   }
   private update() {
-    this.form.validate((valid) => {
+    (this.$refs.formRef as any).validate((valid: boolean) => {
       if (valid) {
         this.updateLoading = true;
         const { location, ...otherForm } = this.formModel;

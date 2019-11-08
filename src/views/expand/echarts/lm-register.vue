@@ -1,24 +1,42 @@
 <template>
-  <el-card class="lm-charts">
-    <div slot="header" class="clearfix">
-      <el-row>
-        <el-col :span="12">
-          <span>龙门课堂首页用户访问来源</span>
-        </el-col>
-        <el-col :span="12">
-          <span>活跃推广员用户(取前3名)</span>
-        </el-col>
-      </el-row>
-    </div>
-    <el-row>
-      <el-col :span="12">
-        <base-charts ref="charts" id="id-lm-charts" width="50%" height="250px"></base-charts>
-      </el-col>
-      <el-col :span="12">
-        <base-table :table-data="shareTopList" :row-header="rowHeader" />
-      </el-col>
-    </el-row>
-  </el-card>
+  <el-row :gutter="20">
+    <el-col :span="12">
+      <el-card>
+        <span slot="header">龙门课堂首页 - 用户访问来源</span>
+        <el-row>
+          <el-col :span="18">
+            <base-charts ref="charts" id="id-lm-charts" width="50%" height="250px"></base-charts>
+          </el-col>
+          <el-col :span="6">
+            <el-card class="lm-card">
+              <div class="lm-card-flex" @click="jump(true)">
+                <base-svg icon-class="baomingshuju" style="font-size: 22px;" />
+                <div>
+                  <span>报名</span>
+                  <span class="lm-card-flex--active">{{ topTeacherCount.topClassSignCount || 0 }}</span>
+                </div>
+              </div>
+            </el-card>
+            <el-card class="lm-card">
+              <div class="lm-card-flex" @click="jump(false)">
+                <base-svg icon-class="payment" style="font-size: 22px;" />
+                <div>
+                  <span>支付</span>
+                  <span class="lm-card-flex--active">{{ topTeacherCount.topClassPayCount || 0 }}</span>
+                </div>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+      </el-card>
+    </el-col>
+    <el-col :span="12">
+      <el-card>
+        <span slot="header">活跃推广员用户(取前3名)</span>
+        <base-table :table-data="shareTopList" :row-header="rowHeader" style="height:250px" />
+      </el-card>
+    </el-col>
+  </el-row>
 </template>
 
 <script lang='ts'>
@@ -38,6 +56,7 @@ export default class LmCharts extends Mixins(BaseVue) {
   @Ref() readonly charts!: BaseCharts;
   private shareCount: any[] = [];
   private shareTopList: any[] = [];
+  private topTeacherCount: any = {};
   private rowHeader: IRowHeader[] = [
     {
       label: '打开次数',
@@ -65,6 +84,23 @@ export default class LmCharts extends Mixins(BaseVue) {
   ];
   mounted() {
     this.getData();
+    this.getTopClassStatistics();
+  }
+  private jump(flag: boolean) {
+    this.$router.push({
+      name: 'LmSignPay',
+      query: {
+        name: flag ? 'sign' : 'pay',
+        url: flag ? kysjApis.getSignInStudentList : kysjApis.getPayStudentList,
+      },
+    });
+  }
+  private getTopClassStatistics() {
+    this.http({
+      url: kysjApis.getTopClassStatistics,
+    }).then(({ data }: any) => {
+      this.topTeacherCount = data.data;
+    });
   }
   private async getData() {
     await this.http({
@@ -101,7 +137,7 @@ export default class LmCharts extends Mixins(BaseVue) {
       },
       legend: {
         orient: 'vertical',
-        left: 'right',
+        left: 'left',
         data: ['二维码', '公众号', '链接', '其他'],
       },
       series: [
@@ -126,10 +162,19 @@ export default class LmCharts extends Mixins(BaseVue) {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/style/mixins/utils';
-.lm-charts {
-  .clearfix {
-    @include utils-clearfix();
+@import '~@/style/var';
+.lm-card {
+  cursor: pointer;
+  &:nth-child(1) {
+    margin-bottom: 20px;
+  }
+  &-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &--active {
+      color: $--color-primary;
+    }
   }
 }
 </style>

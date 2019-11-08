@@ -35,9 +35,6 @@ export default class PushStreamClass extends Mixins(BaseVue, BaseFormVue) {
   private get rowHeader() {
     return rowHeader;
   }
-  private getData() {
-    this.baseTable.getData();
-  }
   private bind(data: any) {
     this.current = data;
     this.bindDialogShow = true;

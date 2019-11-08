@@ -43,9 +43,6 @@ export default class RolesEditUser extends Mixins(BaseVue, BaseFormVue) {
   private mounted() {
     this.getData();
   }
-  private getData() {
-    this.baseTable.getData();
-  }
   private add() {
     this.current = {};
     this.addUpdateDialogShow = true;

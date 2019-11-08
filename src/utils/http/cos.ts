@@ -44,12 +44,12 @@ const cos = new COS({
  * @param {File} file 需要上传的文件
  * @param {UploadCallback} callback 文件上传过程的回调
  */
-export default function upload(file: File, callback: UploadCallback) {
-  cos.sliceUploadFile(
+export default async function upload(file: File, callback: UploadCallback) {
+  await cos.sliceUploadFile(
     {
       Bucket: cosConfig.Bucket,
       Region: cosConfig.Region,
-      Key: `kysj/${file.name}`,
+      Key: `kysj-admin/${file.name}`,
       Body: file,
       onTaskReady: (taskId: any) => {
         callback.onReady(cos, taskId);

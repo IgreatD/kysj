@@ -1,7 +1,12 @@
 <template>
   <div class="home">
-    <lm-register style="margin-bottom: 20px" />
-    <ky-register />
+    <template v-if="isOrgan">
+      <h3>{{title}}</h3>
+    </template>
+    <template v-else>
+      <lm-register style="margin-bottom: 20px" />
+      <ky-register />
+    </template>
   </div>
 </template>
 
@@ -10,6 +15,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import settings from '@/config/settings';
 import KyRegister from '@/views/expand/echarts/ky-register.vue';
 import LmRegister from '@/views/expand/echarts/lm-register.vue';
+import user from '@/store/user';
 @Component({
   components: {
     KyRegister,
@@ -19,6 +25,9 @@ import LmRegister from '@/views/expand/echarts/lm-register.vue';
 export default class Home extends Vue {
   get title() {
     return `欢迎来到${settings.title}`;
+  }
+  get isOrgan() {
+    return user.auth && user.auth.organizationId;
   }
 }
 </script>

@@ -42,9 +42,6 @@ export default class AccountCenter extends Mixins(BaseVue, BaseFormVue) {
   private mounted() {
     this.getData();
   }
-  private getData() {
-    this.baseTable.getData();
-  }
   private setTop({ isTopTeacher, data }: any) {
     this.http({
       url: kysjApis.setTeacherIsTop,

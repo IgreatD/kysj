@@ -51,9 +51,6 @@ export default class ClassList extends Mixins(BaseVue, BaseFormVue) {
   private mounted() {
     this.getData();
   }
-  private getData() {
-    this.baseTable.getData();
-  }
   private update(data: any) {
     this.current = data;
     this.updateDialogShow = true;

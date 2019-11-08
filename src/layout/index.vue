@@ -14,7 +14,7 @@
         </header>
         <main class="ky-layout__container" :class="coll && 'ky-layout__container--coll'">
           <transition name="fade" mode="out-in">
-            <keep-alive :exclude="exclude" :max="maxKeepAlive">
+            <keep-alive :include="include" :max="maxKeepAlive">
               <router-view class="ky-layout__content"></router-view>
             </keep-alive>
           </transition>
@@ -43,8 +43,8 @@ export default class Layout extends Vue {
   private get maxKeepAlive() {
     return settings.maxKeepAlive;
   }
-  private get exclude() {
-    return ['Home', 'DictsBase', 'ToolsEditor', 'AchievementsSecharge'];
+  private get include() {
+    return ['Home'];
   }
 }
 </script>

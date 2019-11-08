@@ -38,9 +38,6 @@ export default class MoneyRecharge extends Mixins(BaseVue, BaseFormVue) {
   private mounted() {
     this.getData();
   }
-  private getData() {
-    this.baseTable.getData();
-  }
   private examine(data: any) {
     this.current = data;
     this.examineDialogShow = true;

@@ -52,9 +52,6 @@ export default class RolesPermission extends Mixins(BaseVue, BaseFormVue) {
   private mounted() {
     this.getData();
   }
-  private getData() {
-    this.baseTable.getData();
-  }
   private add() {
     this.current = {};
     this.addUpdateDialogShow = true;
@@ -86,8 +83,7 @@ export default class RolesPermission extends Mixins(BaseVue, BaseFormVue) {
           roleId: this.current.roleId,
           status,
         },
-      })
-      .then(() => {
+      }).then(() => {
         this.$message.success(`角色${statusText}成功`);
         this.getData();
       });

@@ -3,7 +3,7 @@
     <template v-slot:footer>
       <el-button :type="confirmType" @click="addOrUpdate" :loading="updateLoading">{{confirmText}}</el-button>
     </template>
-    <el-form ref="form" label-width="100px" :model="formModel" :rules="formRules">
+    <el-form ref="formRef" label-width="100px" :model="formModel" :rules="formRules">
       <el-form-item label="设备编号" prop="deviceCode">
         <el-input v-model="formModel.deviceCode" placeholder="请输入设备编号" />
       </el-form-item>
@@ -70,7 +70,7 @@ export default class AddOrUpdateDialog extends Mixins(BaseDialogVue) {
   }
 
   private addOrUpdate() {
-    this.form.validate((valid) => {
+    (this.$refs.formRef as any).validate((valid: boolean) => {
       if (valid) {
         this.updateLoading = true;
         this.http({

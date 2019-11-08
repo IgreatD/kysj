@@ -27,7 +27,7 @@ export default class BaseFunctions extends Vue {
   get functions() {
     const meta = this.$route.meta;
     if (meta && meta.functions) {
-      return meta.functions.filter((fn: any) => fn.otherName !== 'select');
+      return meta.functions.filter((fn: any) => fn.otherName !== 'nomal');
     } else {
       return [];
     }

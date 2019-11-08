@@ -34,6 +34,11 @@ const createRouter = () =>
             name: 'ClassLessonList',
             component: () => import('@/views/class/list/lesson/index.vue'),
           },
+          {
+            path: '/expand/lm-sign-pay',
+            name: 'LmSignPay',
+            component: () => import('@/views/expand/lm-sign-pay.vue'),
+          },
         ],
       },
     ],

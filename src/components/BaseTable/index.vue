@@ -1,14 +1,16 @@
 <template>
   <div>
-    <template v-if="showForm">
-      <base-form :forms="forms" v-model="formModel" @query="getData" />
-    </template>
-    <base-functions
-      v-on="$listeners"
-      @query="query"
-      :show-query="showQuery"
-      :show-functions="showFunctions"
-    />
+    <sticky :stickyTop="64">
+      <template v-if="showForm">
+        <base-form :forms="forms" v-model="formModel" @query="getData" />
+      </template>
+      <base-functions
+        v-on="$listeners"
+        @query="query"
+        :show-query="showQuery"
+        :show-functions="showFunctions"
+      />
+    </sticky>
     <base-table
       v-on="$listeners"
       v-bind="$attrs"
@@ -34,6 +36,7 @@ import BasePagination from '@/components/BasePagination/index.vue';
 import BaseForm from '@/components/BaseForm/_index.vue';
 import BaseTable from '@/components/BaseTable/_index.vue';
 import BaseFunctions from '@/components/BaseFunctions/_index.vue';
+import Sticky from '@/components/Sticky/index.vue';
 import { IRowHeader } from '.';
 import { isEmpty } from '@/utils';
 import { IFormType } from '@/types/formType';
@@ -44,6 +47,7 @@ import user from '@/store/user';
     BaseTable,
     BaseForm,
     BaseFunctions,
+    Sticky,
   },
 })
 export default class BaseTableList extends Mixins(BaseListVue) {

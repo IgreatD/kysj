@@ -31,9 +31,6 @@ export default class PushStreamClass extends Mixins(BaseFormVue) {
   private mounted() {
     this.getData();
   }
-  private getData() {
-    this.baseTable.getData();
-  }
   private opearSteam({ row, url, name }: any) {
     this.http({
       url,

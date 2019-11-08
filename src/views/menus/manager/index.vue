@@ -53,10 +53,10 @@ export default class MenuManager extends Mixins(BaseFormVue) {
     return rowHeader;
   }
   private mounted() {
-    this.getData();
+    this.init();
   }
-  private async getData() {
-    await this.baseTable.getData();
+  private async init() {
+    await this.getData();
     this.pMenus = this.baseTable.tableData.filter((data: any) => !data.pname);
   }
   private async functionSet() {

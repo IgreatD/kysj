@@ -15,4 +15,8 @@ export default class BaseFormVue extends Mixins(BaseVue) {
       }
     });
   }
+  async getData() {
+    await this.$nextTick();
+    await this.baseTable.getData();
+  }
 }
