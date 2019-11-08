@@ -22,7 +22,7 @@
     "cnchar": "^1.0.5",
     "core-js": "^2.6.5",
     "cos-js-sdk-v5": "^0.5.20",
-    "element-ui": "^2.11.0",
+    "element-ui": "2.12.0",
     "file-saver": "^2.0.2",
     "fuse.js": "^3.4.5",
     "js-md5": "^0.7.3",
