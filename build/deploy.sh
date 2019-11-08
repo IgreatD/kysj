@@ -26,7 +26,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
   yarn build
 
-  cd dist
+  cd dist/ms/kysj/
 
   # commit
   git init
