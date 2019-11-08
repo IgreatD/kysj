@@ -13,7 +13,9 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "Deploy $VERSION ..."
 
-  VERSION=$VERSION
+  VERSION=$VERSION 
+
+  yarn build
 
   npm version $VERSION --message "[release] $VERSION"
 
@@ -24,9 +26,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   git rebase master
   git push origin dev
 
-  yarn build
-
-  cd dist
+  cd dist/ms/kysj/
 
   # commit
   git init
