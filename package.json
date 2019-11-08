@@ -18,9 +18,7 @@
     "pub": "yarn bootstrap && sh ./build/git-release.sh && sh ./build/deploy.sh"
   },
   "dependencies": {
-    "animate.css": "^3.7.2",
     "axios": "^0.18.0",
-    "better-scroll": "^1.15.2",
     "cnchar": "^1.0.5",
     "core-js": "^2.6.5",
     "cos-js-sdk-v5": "^0.5.20",
@@ -33,16 +31,13 @@
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "path-to-regexp": "^3.0.0",
-    "screenfull": "^4.2.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.1.0",
-    "vue-meta": "^2.0.3",
     "vue-property-decorator": "8.2.2",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1",
     "vuex-class": "^0.3.2",
-    "vuex-module-decorators": "^0.9.9",
-    "xlsx": "^0.14.4"
+    "vuex-module-decorators": "^0.9.9"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.5.5",
