@@ -22,6 +22,7 @@
     "cnchar": "^1.0.5",
     "core-js": "^2.6.5",
     "cos-js-sdk-v5": "^0.5.20",
+    "dplayer": "^1.25.0",
     "element-ui": "2.12.0",
     "file-saver": "^2.0.2",
     "fuse.js": "^3.4.5",
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.5.5",
     "@types/better-scroll": "^1.12.1",
+    "@types/dplayer": "^1.25.0",
     "@types/file-saver": "^2.0.1",
     "@types/jest": "^23.1.4",
     "@types/lodash": "^4.14.136",

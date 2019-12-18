@@ -10,8 +10,8 @@
       </el-form-item>
     </template>
     <el-form-item v-if="showQuery">
-      <el-input v-model="queryText" placeholder="请输入需要搜素的内容" clearable>
-        <el-button slot="append" icon="el-icon-search" @click="$emit('query', queryText)"></el-button>
+      <el-input v-model="queryText" placeholder="请输入需要搜素的内容" clearable @keyup.enter.native="search">
+        <el-button slot="append" icon="el-icon-search" @click="search"></el-button>
       </el-input>
     </el-form-item>
   </el-form>
@@ -31,6 +31,9 @@ export default class BaseFunctions extends Vue {
     } else {
       return [];
     }
+  }
+  private search() {
+    this.$emit('query', this.queryText);
   }
 }
 </script>

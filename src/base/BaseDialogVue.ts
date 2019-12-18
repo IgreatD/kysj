@@ -25,5 +25,6 @@ export default class BaseDialogVue extends Mixins(BaseVue) {
   }
   close() {
     Object.assign(this.$data, (this.$options as any).data.call(this));
+    this.$emit('update:dialogData', {});
   }
 }

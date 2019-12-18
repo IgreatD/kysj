@@ -146,6 +146,13 @@ const kysjApis = {
   addHelp: 'addHelp',
   deleteHelp: 'deleteHelp',
   getLessonRecordSource: 'getLessonRecordSource',
+  getClassLessonRecordList: 'getClassLessonRecordList',
+  clipVideo: 'clipVideo',
+  deleteClassLessonRecord: 'ClassLessonRecordDelete',
+  getRecordStatis: 'getRecordStatis',
+  getRecordStatisticsByAccountID: 'getRecordStatisticsByAccountID',
+  getRecordStatisticsByClassLessonID: 'getRecordStatisticsByClassLessonID',
+  copyLessonRecord: 'copyLessonRecord',
 };
 formatApi(kysjApis, settings.apiProxies.kysj);
 

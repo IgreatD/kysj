@@ -1,8 +1,8 @@
 <template>
-  <div :style="{zIndex:zIndex}">
+  <div :style="{height:height+'px',zIndex:zIndex}">
     <div
       :class="{className , 'is-sticky': isSticky}"
-      :style="{top:(isSticky ? stickyTop +'px' : ''),zIndex:zIndex,position:position,width:width}"
+      :style="{top:(isSticky ? stickyTop +'px' : ''),zIndex:zIndex,position:position,width:width,height:height+'px'}"
     >
       <slot></slot>
     </div>
@@ -37,7 +37,7 @@ export default {
     };
   },
   mounted() {
-    this.height = this.$el.getBoundingClientRect().height;
+    this.height = this.$el.getBoundingClientRect().height + 18;
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener(
       'resize',

@@ -44,7 +44,7 @@ export default class Layout extends Vue {
     return settings.maxKeepAlive;
   }
   private get include() {
-    return ['Home'];
+    return ['Home', 'LessonRecordSource'];
   }
 }
 </script>

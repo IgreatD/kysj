@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <template v-if="isOrgan">
-      <h3>{{title}}</h3>
+    <h3>{{title}}</h3>
+    <!-- <template v-if="isOrgan">
     </template>
     <template v-else>
       <lm-register style="margin-bottom: 20px" />
       <ky-register />
-    </template>
+    </template>-->
   </div>
 </template>
 

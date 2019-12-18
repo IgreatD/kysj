@@ -43,6 +43,15 @@
       <el-form-item label="课堂封面" prop="coverPath">
         <base-upload v-model="formModel.CoverPath" />
       </el-form-item>
+      <el-form-item label="学生购买方式" prop="chargeType">
+        <el-radio-group v-model="formModel.chargeType">
+          <el-radio label="1">收取所有未上课时的费用</el-radio>
+          <el-radio label="2">收取所有课时的费用</el-radio>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="班级描述(富文本)">
+        <tinymce v-model="formModel.DescribeRichText" />
+      </el-form-item>
     </el-form>
   </base-dialog>
 </template>
@@ -53,9 +62,11 @@ import BaseDialogVue from '@/base/BaseDialogVue';
 import { isEmpty } from '@/utils';
 import kysjApis from '@/api/kysj';
 import BaseUpload from '@/components/BaseUpload/index.vue';
+import Tinymce from '@/components/Tinymce/index.vue';
 @Component({
   components: {
     BaseUpload,
+    Tinymce,
   },
 })
 export default class ClzUpdateDialog extends Mixins(BaseDialogVue) {
@@ -89,6 +100,7 @@ export default class ClzUpdateDialog extends Mixins(BaseDialogVue) {
       url: kysjApis.updateClassInfo,
       data: {
         classID: this.formModel.ClassID,
+        classDescribe: this.formModel.Describe,
         className: this.formModel.Name,
         studentNumber: this.formModel.StudentNumber,
         lessonPrice: this.formModel.LessonPrice,
@@ -97,6 +109,8 @@ export default class ClzUpdateDialog extends Mixins(BaseDialogVue) {
         exitClassBackRate: this.formModel.exitClassBackRate,
         canBuySingleLesson: this.formModel.canBuySingleLesson,
         disCountRecord: this.formModel.DiscountRecord,
+        chargeType: this.formModel.chargeType,
+        classDescribeRichText: this.formModel.DescribeRichText,
       },
     })
       .then(() => {

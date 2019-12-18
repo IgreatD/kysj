@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :visible.sync="syncShow" :title="title" @open="open">
+  <base-dialog :visible.sync="syncShow" :title="title" @opened="open" v-if="syncShow">
     <template v-slot:footer>
       <el-button :type="confirmType" :loading="updateLoading" @click="addOrUpdate">{{confirmText}}</el-button>
     </template>
@@ -19,7 +19,7 @@
             v-for="item in roles"
             :key="item.roleId"
             :label="item.roleName"
-            :disabled="item.roleId === '1'"
+            :disabled="item.roleId === '1' || item.status === '-1'"
             :value="item.roleId"
           />
         </el-select>
@@ -86,7 +86,7 @@ export default class AddOrUpdateDialog extends Mixins(BaseDialogVue) {
       if (valid) {
         this.updateLoading = true;
         this.http({
-          url: kysjApis.userOnOff,
+          url: kysjApis.addUser,
           data: {
             ...this.formModel,
             mobile: '',

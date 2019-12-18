@@ -65,7 +65,7 @@ export default class Login extends Mixins(BaseVue) implements ILogin {
     passWord: [{ required: true, message: '请输入密码', trigger: 'blur' }],
   };
   loading = false;
-  title = '课上课下教学精细化管理系统';
+  title = settings.title;
   loginStaus = '马上登录';
   private get loginBtnStyle() {
     return {

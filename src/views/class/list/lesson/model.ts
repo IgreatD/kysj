@@ -28,6 +28,7 @@ export const rowHeader: IRowHeader[] = [
   {
     label: '课时名称',
     prop: 'LessonTitle',
+    minWidth: 150,
   },
   {
     label: '课时价格',

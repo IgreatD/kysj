@@ -39,6 +39,11 @@ const createRouter = () =>
             name: 'LmSignPay',
             component: () => import('@/views/expand/lm-sign-pay.vue'),
           },
+          {
+            path: '/record-stati',
+            name: 'RecordStati',
+            component: () => import('@/views/class/record-source/record-stati.vue'),
+          },
         ],
       },
     ],

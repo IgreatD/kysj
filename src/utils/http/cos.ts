@@ -2,7 +2,7 @@
  * @Author: IgreatD
  * @Date: 2018-11-16 09:40:46
  * @Last Modified by: IgreatD
- * @Last Modified time: 2019-10-17 17:46:06
+ * @Last Modified time: 2019-11-27 11:14:39
  *
  * 腾讯云对象存储签名获取以及文件上传
  */
@@ -23,7 +23,7 @@ const cos = new COS({
   getAuthorization: async (options: OptionsTypes, callback: any) => {
     // 异步获取签名
     await axios
-      .get('/cos')
+      .get('/api/getCosAuth')
       .then((data) => {
         callback({
           TmpSecretId: data.data.TmpSecretId,

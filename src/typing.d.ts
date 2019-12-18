@@ -3,4 +3,5 @@ declare module 'cnchar';
 declare module 'cos-js-sdk-v5';
 declare module 'path';
 declare module 'js-md5';
+declare module 'dplayer';
 declare module 'qrcodejs2';

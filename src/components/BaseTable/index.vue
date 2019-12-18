@@ -10,6 +10,7 @@
         :show-query="showQuery"
         :show-functions="showFunctions"
       />
+      <slot name="tab"></slot>
     </sticky>
     <base-table
       v-on="$listeners"

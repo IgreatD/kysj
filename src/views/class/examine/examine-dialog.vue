@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :visible.sync="syncShow" title="班级审核">
+  <base-dialog :visible.sync="syncShow" title="班级审核" v-if="syncShow">
     <template v-slot:footer>
       <el-button type="warning" @click="examine" :loading="updateLoading">审核</el-button>
     </template>

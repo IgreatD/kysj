@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :visible.sync="syncShow" title="角色权限分配" @open="open">
+  <base-dialog :visible.sync="syncShow" title="角色权限分配" @opened="open" v-if="syncShow">
     <template v-slot:footer>
       <el-button type="primary" :loading="updateLoading" @click="allot">分配</el-button>
     </template>

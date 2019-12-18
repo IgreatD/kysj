@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :visible.sync="syncShow" title="账号审核">
+  <base-dialog :visible.sync="syncShow" title="账号审核" v-if="syncShow">
     <template v-slot:footer>
       <el-button type="warning" :loading="updateLoading" @click="examine(0)">不通过</el-button>
       <el-button type="success" :loading="updateLoading" @click="examine(1)">通过</el-button>

@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :visible.sync="syncShow" title="修改菜单">
+  <base-dialog :visible.sync="syncShow" title="修改菜单" v-if="syncShow">
     <template v-slot:footer>
       <el-button type="warning" :loading="updateLoading" @click="update">修改</el-button>
     </template>

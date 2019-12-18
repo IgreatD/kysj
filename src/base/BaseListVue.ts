@@ -15,6 +15,14 @@ export default class BaseListVue extends Mixins(BaseVue) {
     return this.$route.meta.title || '表单';
   }
 
+  reset() {
+    this.tableData = [];
+    this.pageIndex = 1;
+    this.pageSize = 10;
+    this.total = 0;
+    this.queryText = '';
+  }
+
   pageData() {
     const page = { pageSize: this.pageSize, pageIndex: this.pageIndex - 1 };
     return page;

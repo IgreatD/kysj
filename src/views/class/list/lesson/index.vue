@@ -4,6 +4,7 @@
     <el-tabs v-model="status" @tab-click="getData">
       <el-tab-pane v-for="(item, index) in tabs" :key="index" :name="item.name" :label="item.label"></el-tab-pane>
     </el-tabs>
+    
     <base-table
       ref="baseTable"
       :row-header="rowHeader"

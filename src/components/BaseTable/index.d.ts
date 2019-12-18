@@ -4,6 +4,7 @@ export interface IRowHeader {
   prop?: string | number;
   label?: string;
   width?: number;
+  minWidth?: number;
   type?: 'index' | 'selection' | 'expand';
   link?: boolean;
   to?: (item: any) => object;

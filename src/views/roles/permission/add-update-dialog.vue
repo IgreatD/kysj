@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :visible.sync="syncShow" :title="title">
+  <base-dialog :visible.sync="syncShow" :title="title" v-if="syncShow">
     <template v-slot:footer>
       <el-button :type="confirmType" :loading="updateLoading" @click="addOrUpdate">{{confirmText}}</el-button>
     </template>

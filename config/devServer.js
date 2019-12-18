@@ -7,15 +7,15 @@ module.exports = {
       },
     },
     '/api/ms/kysj': {
-      target: 'http://101.201.152.49:9999/ExamineService.svc/',
+      target: 'http://123.57.240.146:9999/ExamineService.svc/',
       pathRewrite: {
         '^/api/ms/kysj': '',
       },
     },
-    '/cos': {
-      target: 'http://101.201.152.49:9009/sts-auth',
+    '/api/getCosAuth': {
+      target: 'http://123.57.240.146:9009/sts-auth',
       pathRewrite: {
-        '^/cos': '',
+        '^/api/getCosAuth': '',
       },
     },
   },

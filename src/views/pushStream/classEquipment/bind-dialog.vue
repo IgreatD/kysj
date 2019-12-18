@@ -1,5 +1,5 @@
 <template>
-  <base-dialog :visible.sync="syncShow" :title="title" @open="getData">
+  <base-dialog :visible.sync="syncShow" :title="title" @opened="getData" v-if="syncShow">
     <template v-slot:footer>
       <el-button type="warning" @click="bind" :loading="updateLoading">绑定</el-button>
     </template>

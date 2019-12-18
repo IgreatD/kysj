@@ -10,12 +10,9 @@
       :remote-method="querySearch"
       @change="change"
     >
-      <i
-        slot="prefix"
-        class="el-icon-search"
-      />
+      <i slot="prefix" class="el-icon-search" />
       <el-option
-        v-for="(item, index) in options"
+        v-for="(item) in options"
         :key="item.path"
         :value="item"
         :label="item.title.join(' > ')"

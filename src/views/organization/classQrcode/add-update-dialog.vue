@@ -16,6 +16,7 @@
       </el-form-item>
       <el-form-item label="地区">
         <el-cascader
+          clearable
           ref="citys"
           v-model="selectCity"
           :options="citys"
@@ -29,7 +30,12 @@
         </el-cascader>
       </el-form-item>
       <el-form-item label="学校">
-        <el-select v-model="formModel.schoolId" placeholder="请选择学校" @change="onSchoolChange">
+        <el-select
+          clearable
+          v-model="formModel.schoolId"
+          placeholder="请选择学校"
+          @change="onSchoolChange"
+        >
           <el-option
             v-for="(item, index) in schools"
             :key="index"
@@ -44,11 +50,13 @@
           :options="stages"
           placeholder="请选择学段、年级"
           @change="onStageChange"
+          clearable
         >
           <template slot-scope="{ node, data }">
             <span>{{ data.label }}</span>
           </template>
         </el-cascader>
+        <!-- <el-checkbox label="必选" style="padding-left: 16px;" v-model="stageMust"></el-checkbox> -->
       </el-form-item>
       <el-form-item label="二维码" v-if="isAdd">
         <el-select v-model="size" placeholder="请选择二维码的尺寸" @change="onSizeChange">
@@ -91,6 +99,7 @@ export default class AddUpdateDialog extends Mixins(BaseDialogVue) {
   private size = 128;
   private qrCode: any = null;
   private showCode = false;
+  // private stageMust = true;
   private get qrcodeId() {
     return `qrcode-${Date.now()}`;
   }
@@ -180,6 +189,13 @@ export default class AddUpdateDialog extends Mixins(BaseDialogVue) {
     }
   }
   private onStageChange() {
+    if (isEmpty(this.selectStage)) {
+      this.formModel.stage = '';
+      this.formModel.stageId = '';
+      this.formModel.grade = '';
+      this.formModel.gradeId = '';
+      return;
+    }
     for (const stage of this.stages) {
       if (this.selectStage[0] === stage.value) {
         this.formModel.stageId = this.selectStage[0];
@@ -197,6 +213,15 @@ export default class AddUpdateDialog extends Mixins(BaseDialogVue) {
   private cityChange() {
     this.$set(this.formModel, 'school', '');
     this.$set(this.formModel, 'schoolId', '');
+    if (!this.selectCity[0]) {
+      this.formModel.provinceId = '';
+      this.formModel.province = '';
+      this.formModel.city = '';
+      this.formModel.cityId = '';
+      this.formModel.districtId = '';
+      this.formModel.district = '';
+      return;
+    }
     for (const province of this.citys) {
       if (this.selectCity[0] === province.value) {
         this.formModel.provinceId = this.selectCity[0];
@@ -219,6 +244,9 @@ export default class AddUpdateDialog extends Mixins(BaseDialogVue) {
     this.getSchool();
   }
   private getSchool() {
+    if (this.selectCity[0] === '0' || this.selectCity[1] === '0') {
+      return;
+    }
     this.http<any[]>({
       url: kysjApis.getSchool,
       data: {
@@ -231,6 +259,12 @@ export default class AddUpdateDialog extends Mixins(BaseDialogVue) {
   }
   private update() {
     this.updateLoading = true;
+    /* if (this.stageMust && isEmpty(this.selectStage.stage)) {
+      this.formModel.stage = '';
+      this.formModel.stageId = '0';
+      this.formModel.grade = '';
+      this.formModel.gradeId = '0';
+    } */
     this.http({
       url: kysjApis.addOrganizationParameters,
       data: {

@@ -74,7 +74,12 @@
     </template>
     <el-form-item v-if="showQuery">
       <el-button-group>
-        <el-button type="primary" icon="el-icon-search" @click="$emit('query')">查询</el-button>
+        <el-button
+          type="primary"
+          icon="el-icon-search"
+          @click="$emit('query')"
+          @keyup.native.enter="$emit('query')"
+        >查询</el-button>
       </el-button-group>
     </el-form-item>
   </el-form>
