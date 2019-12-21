@@ -1,15 +1,7 @@
 <template>
-  <div
-    :class="{isFullscreen}"
-    class="ky-tinymce"
-    :style="{width:containerWidth}"
-  >
-    <textarea
-      :id="tinymceId"
-      class="ky-tinymce__content"
-    />
-
-    </div>
+  <div :class="{isFullscreen}" class="ky-tinymce" :style="{width:containerWidth}">
+    <textarea :id="tinymceId" class="ky-tinymce__content" />
+  </div>
 </template>
 
 <script lang='ts'>
@@ -17,6 +9,7 @@ import load from './dynamicLoadScript';
 import plugins from './plugins';
 import toolbar, { menubar } from './toolbar';
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import upload from '@/utils/http/cos';
 const tinymceCDN = 'https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js';
 @Component
 export default class Tinymce extends Vue {
@@ -92,6 +85,15 @@ export default class Tinymce extends Vue {
       default_link_target: '_blank',
       link_title: false,
       nonbreaking_force_tab: true,
+      images_upload_handler: (blobInfo: any, success: any, failure: any) => {
+        upload(blobInfo.blob(), {
+          onSuccess: (data: any) => success(`https://${data.Location}`),
+          onError: (err: any) => failure(err),
+          onReady: () => {
+            /*  */
+          },
+        });
+      },
       init_instance_callback: (editor: any) => {
         if (self.value) {
           editor.setContent(self.value);
