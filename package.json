@@ -27,7 +27,7 @@
     "file-saver": "^2.0.2",
     "fuse.js": "^3.4.5",
     "js-md5": "^0.7.3",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
